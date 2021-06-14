@@ -49,7 +49,7 @@ schedule.scheduleJob('0 0 0,8,10,12,14,16,18,20,22 * * *', () => {
 		const job = () => message('$p', process.env.SERVER, process.env.CHANNEL)
 			.then(() => log(`Scheduler: job executed: message $p`))
 			.catch((err) => log(err, 'error'))
-		setTimeout(job, timeoutMinutes * 00 * 1000)
+		setTimeout(job, timeoutMinutes * 60 * 1000)
 		log(`Scheduler: job created, offset: ${timeoutMinutes}m`)
 	} while(Math.random() < 0.1);
 })
