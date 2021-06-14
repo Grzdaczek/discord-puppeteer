@@ -1,17 +1,16 @@
 {
-  "name": "disord-puppeteer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "puppeteer": "^10.0.0",
-    "puppeteer-core": "^10.0.0"
-  }
+	"name": "disord-puppeteer",
+	"version": "1.1.0",
+	"main": "discord-puppeteer.js",
+	"scripts": {
+		"start": "node discord-puppeteer.js"
+	},
+	"keywords": [],
+	"author": "Grzdaczek",
+	"dependencies": {
+		"dotenv": "^10.0.0",
+		"node-schedule": "^2.0.0",
+		"puppeteer": "^10.0.0",
+		"puppeteer-core": "^10.0.0"
+	}
 }
