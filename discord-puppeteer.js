@@ -3,15 +3,13 @@ const fs = require('fs')
 const puppeteer = require('puppeteer')
 const schedule = require('node-schedule')
 
+const PRODUCTION = process.env.NODE == 'PRODUCTION' ? true : false
+if(!PRODUCTION) console.warn('Running in development mode')
+
 const execCommand = async (command) => {
-	const browser = await puppeteer.launch({ headless: process.env.NODE == 'PRODUCTION' ? true : false })
+	const browser = await puppeteer.launch({ headless: PRODUCTION ? true : false })
 	const page = await browser.newPage()
 	await page.goto(`https://discord.com/channels/${process.env.SERVER}/${process.env.CHANNEL}`)
-
-	// await page.setViewport({
-	// 	width: 1200,
-	// 	height: 800,
-	// })
 
 	await page.waitForSelector('input[name=email]')
 	await page.focus('input[name=email]')
@@ -27,7 +25,7 @@ const execCommand = async (command) => {
 
 	await page.click('div[role=textbox]')
 	await page.keyboard.type(command)
-	if(process.env.NODE == 'PRODUCTION') await page.keyboard.press('Enter')
+	if(PRODUCTION) await page.keyboard.press('Enter')
 	await new Promise(r => setTimeout(r, 1000));
 
 	browser.close()
